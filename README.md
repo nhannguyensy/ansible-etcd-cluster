@@ -12,7 +12,7 @@ etcd3 ansible_host=ip_etcd_server_3 ansible_user=root ansible_ssh_pass=pass
 ...
 ```
 
-then make sure the name of **NIC** in target server be **eth0**, if it's different , change it in this directory **etcd/roles/create-cluster-tls/templates/etcd.conf.yaml.j2**.
+then make sure the name of **NIC** in target server be **ens160**, if it's different , change it in this directory **etcd/roles/create-cluster-tls/templates/etcd.conf.yaml.j2**.
 
 
 > by default , this playbook use **v3.5.15** etcd version 
