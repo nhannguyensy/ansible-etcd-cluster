@@ -6,9 +6,9 @@
     #   run_once: true
     #   loop: "{{ groups['etcd'] }}"
 
-    - name: create ./artifacts directory to house keys and certificates
+    - name: create ../../../generate-ca-tls/artifacts/ directory to house keys and certificates
       file:
-        path: ./artifacts
+        path: ../../../generate-ca-tls/artifacts/
         state: directory
 
   tags: [ pre_readiness ]
