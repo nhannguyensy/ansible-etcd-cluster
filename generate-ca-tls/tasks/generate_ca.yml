@@ -8,7 +8,7 @@
         force: True
       with_items: "{{ groups['etcd'] }}"
       delegate_to: localhost
-      run_once: trues
+      run_once: true
 
     - name: generate CSR for each member
       openssl_csr:
