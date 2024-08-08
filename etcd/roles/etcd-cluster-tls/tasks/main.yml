@@ -34,7 +34,7 @@
 
 - name: copy over the CA certificate
   copy:
-    src: ./../artifacts/ca.crt
+    src: ./artifacts/ca.crt
     remote_src: False
     dest: /etc/etcd/ssl/ca.crt
     owner: root
@@ -44,7 +44,7 @@
 
 - name: copy over the `etcd` member certificate
   copy:
-    src: ./../artifacts/{{inventory_hostname}}.crt
+    src: ./artifacts/{{inventory_hostname}}.crt
     remote_src: False
     dest: /etc/etcd/ssl/server.crt
     owner: root
@@ -54,7 +54,7 @@
 
 - name: copy over the `etcd` member key
   copy:
-    src: ./../artifacts/{{inventory_hostname}}.key
+    src: ./artifacts/{{inventory_hostname}}.key
     remote_src: False
     dest: /etc/etcd/ssl/server.key
     owner: root

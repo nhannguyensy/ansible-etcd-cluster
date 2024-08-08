@@ -1,7 +1,7 @@
 - block:
     - name: generate private key for each member
       openssl_privatekey:
-        path: ./../artifacts/{{item}}.key
+        path: ./artifacts/{{item}}.key
         type: RSA
         size: 4096
         state: present
@@ -12,8 +12,8 @@
 
     - name: generate CSR for each member
       openssl_csr:
-        path: ./../artifacts/{{item}}.csr
-        privatekey_path: ./../artifacts/{{item}}.key
+        path: ./artifacts/{{item}}.csr
+        privatekey_path: ./artifacts/{{item}}.key
         common_name: "{{item}}"
         key_usage:
           - digitalSignature
@@ -28,7 +28,7 @@
  
     - name: generate private key for CA
       openssl_privatekey:
-        path: ./../artifacts/ca.key
+        path: ./artifacts/ca.key
         type: RSA
         size: 4096
         state: present
@@ -36,8 +36,8 @@
 
     - name: generate CSR for CA
       openssl_csr:
-        path: ./../artifacts/ca.csr
-        privatekey_path: ./../artifacts/ca.key
+        path: ./artifacts/ca.csr
+        privatekey_path: ./artifacts/ca.key
         common_name: ca
         organization_name: "Etcd CA"
         basic_constraints:
@@ -51,18 +51,18 @@
 
     - name: generate self-signed CA certificate
       openssl_certificate:
-        path: ./../artifacts/ca.crt
-        privatekey_path: ./../artifacts/ca.key
-        csr_path: ./../artifacts/ca.csr
+        path: ./artifacts/ca.crt
+        privatekey_path: ./artifacts/ca.key
+        csr_path: ./artifacts/ca.csr
         provider: selfsigned
         force: True
 
     - name: generate an `etcd` member certificate signed with our own CA certificate
       openssl_certificate:
-        path: ./../artifacts/{{item}}.crt
-        csr_path: ./../artifacts/{{item}}.csr
-        ownca_path: ./../artifacts/ca.crt
-        ownca_privatekey_path: ./../artifacts/ca.key
+        path: ./artifacts/{{item}}.crt
+        csr_path: ./artifacts/{{item}}.csr
+        ownca_path: ./artifacts/ca.crt
+        ownca_privatekey_path: ./artifacts/ca.key
         provider: ownca
         force: True
       with_items: "{{ groups['etcd'] }}"

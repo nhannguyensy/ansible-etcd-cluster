@@ -8,7 +8,7 @@
 
     - name: create ./artifacts directory to house keys and certificates
       file:
-        path: ./../artifacts
+        path: ./artifacts
         state: directory
 
   tags: [ pre_readiness ]
