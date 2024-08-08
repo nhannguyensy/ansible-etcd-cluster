@@ -15,13 +15,13 @@ etcd3 ansible_host=ip_etcd_server_3 ansible_user=root ansible_ssh_pass=pass
 then make sure the name of **NIC** in target server be **eth0**, if it's different , change it in this directory **etcd/roles/create-cluster-tls/templates/etcd.conf.yaml.j2**.
 
 
-> by default , this playbook use **v3.4.10** etcd version 
+> by default , this playbook use **v3.5.15** etcd version 
 
 you can install any version of etcd , if you need another version , just change this
 **ETCD_VER** variable in this directory **etcd/group_vars/etcd.yml**
 
 ```yaml
-ETCD_VER: v3.4.10
+ETCD_VER: v3.5.15
 ```
 
 ## Install etcd cluster with tls
