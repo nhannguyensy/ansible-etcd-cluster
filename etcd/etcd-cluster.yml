@@ -1,5 +1,6 @@
 ---
 - name: etcd cluster
+  become: yes
   strategy: linear
   hosts: etcd
   roles:
